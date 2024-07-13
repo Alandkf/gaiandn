@@ -1,0 +1,19 @@
+<%- include('../include/header') %>
+
+<h1>Village Details</h1>
+<p>Name: <%= village.name %>
+</p>
+<p>Status: <%= village.status %>
+</p>
+<p>Price: <%= village.price %>
+</p>
+<p>City: <%= village.City.name %>
+</p>
+<p>Created At: <%= village.createdAt %>
+</p>
+<p>Updated At: <%= village.updatedAt %>
+</p>
+<a href="/villages/<%= village.id %>/edit">Edit</a>
+<a href="/villages">Back to List</a>
+
+<%- include('../include/footer') %>

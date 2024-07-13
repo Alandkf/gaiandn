@@ -1,0 +1,27 @@
+<%- include('../include/header') %>
+
+<div class="container mt-4">
+  <h1>All Villages</h1>
+  <ul class="list-group">
+    <% villages.forEach(village=> { %>
+    <li class="list-group-item">
+      <strong>Name:</strong>
+      <%= village.name %> <br />
+      <strong>Status:</strong>
+      <%= village.status %> <br />
+      <strong>Price:</strong>
+      <%= village.price %> <br />
+      <strong>City:</strong>
+      <%= village.City.name %> <br />
+      <a href="/villages/<%= village.id %>/edit" class="btn btn-sm btn-primary"
+        >Edit</a
+      >
+      <a href="/villages/<%= village.id %>" class="btn btn-sm btn-danger"
+        >Delete</a
+      >
+    </li>
+    <% }) %>
+  </ul>
+</div>
+
+<%- include('../include/footer') %>

@@ -1,0 +1,52 @@
+<%- include('../include/header') %>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>All Employees</h1>
+            <a href="/employees/create" class="btn btn-primary">Add New Employee</a>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <% employees.forEach(employee=> { %>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= employee.name %>
+                            </h5>
+                            <p class="card-text"><strong>Salary:</strong>
+                                <%= employee.salary %>
+                            </p>
+                            <p class="card-text"><strong>Phone Number:</strong>
+                                <%= employee.phoneNumber %>
+                            </p>
+                            <p class="card-text"><strong>Address:</strong>
+                                <%= employee.address %>
+                            </p>
+                            <p class="card-text"><strong>Job Type:</strong>
+                                <%= employee.jobType %>
+                            </p>
+                            <p class="card-text"><strong>Section:</strong>
+                                <%= employee.Section.name %>
+                            </p>
+                            <p class="card-text">
+                                <strong>Status:</strong>
+                                <form action="/employees/<%= employee.id %>" method="POST">
+                                <button class="btn <%= employee.status === 'active' ? 'btn-success' : 'btn-danger' %>" 
+                                                type="submit" > <%= employee.status %>
+                                </button>
+                                <input type="hidden" name="status" value="<%= employee.status === 'active' ? 'inactive' : 'active' %>">
+                                </form>
+                            </p>
+                           
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <a href="/employees/<%= employee.id %>/edit" class="btn btn-sm btn-primary me-2">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <%- include('../include/footer') %>

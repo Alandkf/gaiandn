@@ -1,0 +1,16 @@
+<%- include('../include/header') %>
+<h1>Section Details</h1>
+<p>Name: <%= section.name %>
+</p>
+<p>Note: <%= section.note %>
+</p>
+<p>Status: <%= section.status %>
+</p>
+<p>Created At: <%= section.createdAt %>
+</p>
+<p>Updated At: <%= section.updatedAt %>
+</p>
+<a href="/sections/<%= section.id %>/edit">Edit</a>
+<a href="/sections">Back to List</a>
+
+    <%- include('../include/footer') %>
