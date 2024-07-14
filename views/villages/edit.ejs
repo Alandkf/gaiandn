@@ -2,7 +2,7 @@
 
     <div class="container mt-4">
         <h1>Edit Village</h1>
-        <form action="/villages/<%= village.id %>" method="POST">
+        <form action="/villages/<%= village.id %>/update" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="<%= village.name %>" class="form-control" required>

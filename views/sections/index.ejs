@@ -19,12 +19,16 @@
                                 <%= section.name %>
                             </strong> - <%= section.note %>
                         </div>
-                        <div>
-                            <span class="badge <%= section.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                                <%= section.status.toUpperCase() %>
-                            </span>
+                        <div class="d-flex">
+                            <form action="/sections/<%= section.id %>/update" method="post">
+                                <input type="hidden" name="status" value="<%= section.status === 'active' ? 'inactive' : 'active' %>">
+                                <button type="submit" class="badge <%= section.status === 'active' ? 'bg-success' : 'bg-danger' %>">
+                                    <%= section.status.toUpperCase() %>
+                                </button>
+                            </form>
+
                             <a href="/sections/<%= section.id %>/edit"
-                                class="btn btn-sm btn-outline-secondary ms-2">Edit</a>
+                                class="btn btn-sm btn-outline-secondary ms-2" style="margin-left: 1rem;">Edit</a>
                         </div>
                     </li>
                     <% }) %>

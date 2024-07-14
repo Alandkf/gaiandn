@@ -1,3 +1,41 @@
 <%- include('../include/header') %>
-<h1>drivers</h1>
-<%- include('../include/footer') %>
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col">
+                <h1>All Drivers</h1>
+            </div>
+            <div class="col-auto">
+                <a href="/drivers/create" class="btn btn-primary">Create New Driver</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <% drivers.forEach(driver=> { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>
+                                <%= driver.name %>
+                            </strong> - <%= driver.phoneNumber %> - <%= driver.vehicleType %>
+                        </div>
+                        <div class="d-flex">
+                            <form action="/drivers/<%= driver.id %>/update" method="post">
+                                <input type="hidden" name="status"
+                                    value="<%= driver.status === 'active' ? 'inactive' : 'active' %>">
+                                <button type="submit"
+                                    class="badge <%= driver.status === 'active' ? 'bg-success' : 'bg-danger' %>">
+                                    <%= driver.status.toUpperCase() %>
+                                </button>
+                            </form>
+                            <a href="/drivers/<%= driver.id %>/edit"
+                                class="btn btn-sm btn-outline-secondary ms-2" style="margin: 0 1rem;">Edit</a>
+                            <a href="/drivers/<%= driver.id %>/show" class="btn btn-sm btn-secondary ms-2">View Details</a>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+
+    <%- include('../include/footer') %>

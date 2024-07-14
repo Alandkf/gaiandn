@@ -1,19 +1,33 @@
 <%- include('../include/header') %>
 
-<h1>Village Details</h1>
-<p>Name: <%= village.name %>
-</p>
-<p>Status: <%= village.status %>
-</p>
-<p>Price: <%= village.price %>
-</p>
-<p>City: <%= village.City.name %>
-</p>
-<p>Created At: <%= village.createdAt %>
-</p>
-<p>Updated At: <%= village.updatedAt %>
-</p>
-<a href="/villages/<%= village.id %>/edit">Edit</a>
-<a href="/villages">Back to List</a>
+    <div class="container mt-4">
+        <h1>Village Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Name:</strong>
+                    <%= village.name %>
+                </p>
+                <p><strong>Status:</strong>
+                    <%= village.status %>
+                </p>
+                <p><strong>Price:</strong>
+                    <%= village.price %>
+                </p>
+                <p><strong>City:</strong>
+                    <%= village.City.name %>
+                </p>
+                <p><strong>Created At:</strong>
+                    <%= village.createdAt %>
+                </p>
+                <p><strong>Updated At:</strong>
+                    <%= village.updatedAt %>
+                </p>
+            </div>
+            <div class="card-footer">
+                <a href="/villages/<%= village.id %>/edit" class="btn btn-primary">Edit</a>
+                <a href="/villages" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
 
-<%- include('../include/footer') %>
+    <%- include('../include/footer') %>

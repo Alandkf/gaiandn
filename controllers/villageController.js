@@ -5,9 +5,16 @@ exports.index = async (req, res) => {
     res.render('villages/index', { villages });
 };
 
+exports.show = async (req, res) => {
+    const village = await Villages.findByPk(req.params.id, { include: Cities });
+    res.render('villages/show', { village });
+};
+
 exports.create = async (req, res) => {
     const cities = await Cities.findAll();
-    res.render('villages/create', { cities });
+    console.log("here the values that goes with the cities");
+    // console.log(cities);
+    res.render('villages/create',{ cities });
 };
 
 exports.store = async (req, res) => {
@@ -17,7 +24,7 @@ exports.store = async (req, res) => {
 
 exports.edit = async (req, res) => {
     const village = await Villages.findByPk(req.params.id);
-    const cities = await Cities.findAll();
+      const cities = await Cities.findAll();
     res.render('villages/edit', { village, cities });
 };
 

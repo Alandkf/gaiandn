@@ -1,16 +1,42 @@
 <%- include('../include/header') %>
 
     <div class="container mt-4">
-        <h1>All Cities</h1>
-        <ul class="list-group">
-            <% cities.forEach(city=> { %>
-                <li class="list-group-item">
-                    <%= city.name %> -
-                        <a href="/cities/<%= city.id %>/edit" class="btn btn-sm btn-primary">Edit</a> -
-                        <a href="/cities/<%= city.id %>" class="btn btn-sm btn-secondary">View Details</a>
-                </li>
-                <% }) %>
-        </ul>
+        <div class="row mb-3">
+            <div class="col">
+                <h1>All Cities</h1>
+            </div>
+            <div class="col-auto">
+                <a href="/cities/create" class="btn btn-primary">Create New City</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <% cities.forEach(city=> { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>
+                                <%= city.name %>
+                            </strong>
+                            - <span class="badge bg-primary"><%= city.price %></span>
+                        </div>
+                        <div class="d-flex">
+                            <form action="/cities/<%= city.id %>/update" method="post">
+                                <input type="hidden" name="status"
+                                    value="<%= city.status === 'active' ? 'inactive' : 'active' %>">
+                                <button type="submit"
+                                    class="badge <%= city.status === 'active' ? 'bg-success' : 'bg-danger' %>">
+                                    <%= city.status.toUpperCase() %>
+                                </button>
+                            </form>
+                            <a href="/cities/<%= city.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2"
+                               style="margin: 0 1rem;" >Edit</a>
+                            <a href="/cities/<%= city.id %>/show" class="btn btn-sm btn-secondary ms-2">View Details</a>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
     </div>
 
     <%- include('../include/footer') %>

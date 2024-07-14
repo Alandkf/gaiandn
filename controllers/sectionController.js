@@ -3,6 +3,11 @@ const { Sections } = require('../models');
 exports.index = async (req, res) => {
     const sections = await Sections.findAll();
     res.render('sections/index', { sections });
+}; 
+
+exports.show = async (req, res) => {
+    const section = await Sections.findByPk(req.params.id);
+    res.render('sections/show', { section });
 };
 
 exports.create = (req, res) => {
@@ -24,7 +29,7 @@ exports.update = async (req, res) => {
     res.redirect('/sections');
 };
 
-exports.delete = async (req, res) => {
-    await Sections.destroy({ where: { id: req.params.id } });
-    res.redirect('/sections');
-};
+// exports.delete = async (req, res) => {
+//     await Sections.destroy({ where: { id: req.params.id } });
+//     res.redirect('/sections');
+// };

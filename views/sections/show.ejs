@@ -1,16 +1,30 @@
 <%- include('../include/header') %>
-<h1>Section Details</h1>
-<p>Name: <%= section.name %>
-</p>
-<p>Note: <%= section.note %>
-</p>
-<p>Status: <%= section.status %>
-</p>
-<p>Created At: <%= section.createdAt %>
-</p>
-<p>Updated At: <%= section.updatedAt %>
-</p>
-<a href="/sections/<%= section.id %>/edit">Edit</a>
-<a href="/sections">Back to List</a>
+
+    <div class="container mt-4">
+        <h1>Section Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Name:</strong>
+                    <%= section.name %>
+                </p>
+                <p><strong>Note:</strong>
+                    <%= section.note %>
+                </p>
+                <p><strong>Status:</strong>
+                    <%= section.status %>
+                </p>
+                <p><strong>Created At:</strong>
+                    <%= section.createdAt %>
+                </p>
+                <p><strong>Updated At:</strong>
+                    <%= section.updatedAt %>
+                </p>
+            </div>
+            <div class="card-footer">
+                <a href="/sections/<%= section.id %>/edit" class="btn btn-primary">Edit</a>
+                <a href="/sections" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
 
     <%- include('../include/footer') %>

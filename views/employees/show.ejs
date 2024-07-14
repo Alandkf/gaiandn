@@ -1,26 +1,45 @@
 <%- include('../include/header') %>
-<h1>Employee Details</h1>
-<p>Name: <%= employee.name %>
-</p>
-<p>Salary: <%= employee.salary %>
-</p>
-<p>Phone Number: <%= employee.phoneNumber %>
-</p>
-<p>Address: <%= employee.address %>
-</p>
-<p>Job Type: <%= employee.jobType %>
-</p>
-<p>Note: <%= employee.note %>
-</p>
-<p>Status: <%= employee.status %>
-</p>
-<p>Section: <%= employee.Section.name %>
-</p>
-<p>Created At: <%= employee.createdAt %>
-</p>
-<p>Updated At: <%= employee.updatedAt %>
-</p>
-<a href="/employees/<%= employee.id %>/edit">Edit</a>
-<a href="/employees">Back to List</a>
 
-<%- include('../include/footer') %> 
+    <div class="container mt-4">
+        <h1>Employee Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Name:</strong>
+                    <%= employee.name %>
+                </p>
+                <p><strong>Salary:</strong>
+                    <%= employee.salary %>
+                </p>
+                <p><strong>Phone Number:</strong>
+                    <%= employee.phoneNumber %>
+                </p>
+                <p><strong>Address:</strong>
+                    <%= employee.address %>
+                </p>
+                <p><strong>Job Type:</strong>
+                    <%= employee.jobType %>
+                </p>
+                <p><strong>Note:</strong>
+                    <%= employee.note %>
+                </p>
+                <p><strong>Status:</strong>
+                    <%= employee.status %>
+                </p>
+                <p><strong>Section:</strong>
+                    <%= employee.Section.name %>
+                </p>
+                <p><strong>Created At:</strong>
+                    <%= employee.createdAt %>
+                </p>
+                <p><strong>Updated At:</strong>
+                    <%= employee.updatedAt %>
+                </p>
+            </div>
+            <div class="card-footer">
+                <a href="/employees/<%= employee.id %>/edit" class="btn btn-primary">Edit</a>
+                <a href="/employees" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../include/footer') %>

@@ -5,6 +5,11 @@ exports.index = async (req, res) => {
     res.render('employees/index', { employees });
 };
 
+exports.show = async (req, res) => {
+    const employee = await Employees.findByPk(req.params.id, { include: Sections });
+    res.render('employees/show', { employee });
+};
+
 exports.create = async (req, res) => {
     const sections = await Sections.findAll();
     res.render('employees/create', { sections });
@@ -26,7 +31,7 @@ exports.update = async (req, res) => {
     res.redirect('/employees');
 };
 
-exports.delete = async (req, res) => {
-    await Employees.destroy({ where: { id: req.params.id } });
-    res.redirect('/employees');
-};
+// exports.delete = async (req, res) => {
+//     await Employees.destroy({ where: { id: req.params.id } });
+//     res.redirect('/employees');
+// };

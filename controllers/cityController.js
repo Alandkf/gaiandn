@@ -5,6 +5,11 @@ exports.index = async (req, res) => {
     res.render('cities/index', { cities });
 };
 
+exports.show = async (req, res) => {
+    const city = await Cities.findByPk(req.params.id);
+    res.render('cities/show', { city });
+};
+
 exports.create = (req, res) => {
     res.render('cities/create');
 };
@@ -24,7 +29,7 @@ exports.update = async (req, res) => {
     res.redirect('/cities');
 };
 
-exports.delete = async (req, res) => {
-    await Cities.destroy({ where: { id: req.params.id } });
-    res.redirect('/cities');
-};
+// exports.delete = async (req, res) => {
+//     await Cities.destroy({ where: { id: req.params.id } });
+//     res.redirect('/cities');
+// };

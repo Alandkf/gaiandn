@@ -2,10 +2,10 @@
 
     <div class="container mt-4">
         <h1>Create City</h1>
-        <form action="/cities" method="POST">
+        <form action="/cities/store" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter city name" required>
             </div>
             <div class="form-group">
                 <label for="status">Status:</label>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" class="form-control" required>
+                <input type="number" id="price" name="price" class="form-control" placeholder="1000" required>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

@@ -2,7 +2,7 @@
 
     <div class="container mt-4">
         <h1>Edit Section</h1>
-        <form action="/sections/<%= section.id %>" method="POST">
+        <form action="/sections/<%= section.id %>/update" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="<%= section.name %>" class="form-control" required>
