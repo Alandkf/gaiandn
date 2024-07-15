@@ -1,12 +1,12 @@
 <%- include('../include/header') %>
 
-  <div class="container mt-4">
+  <div class="container mt-4 text-right">
     <div class="row mb-3">
       <div class="col">
-        <h1>All Villages</h1>
+        <h1>هەموو شارۆچکەکان</h1>
       </div>
       <div class="col-auto">
-        <a href="/villages/create" class="btn btn-primary">Create New Village</a>
+        <a href="/villages/create" class="btn btn-primary">شارۆچێکی نوێ بەکاربهێنە</a>
       </div>
     </div>
 
@@ -22,17 +22,18 @@
                 <%= village.price %>
               </span>
               <br />
-              <strong>City:</strong>
+              <strong>شار:</strong>
               <%= village.City.name %>
             </div>
             <div class="d-flex">
               <form action="/villages/<%= village.id %>/update" method="post">
                 <input type="hidden" name="status" value="<%= village.status === 'active' ? 'inactive' : 'active' %>">
                 <button type="submit" class="badge <%= village.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                  <%= village.status.toUpperCase() %>
+                  <%= village.status==='active' ? 'چالاک' : 'ناچالاک' %>
                 </button>
               </form>
-              <a href="/villages/<%= village.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2" style="margin: 0 1rem;">Edit</a>
+              <a href="/villages/<%= village.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2"
+                style="margin: 0 1rem;">دەستکاری</a>
             </div>
           </li>
           <% }) %>

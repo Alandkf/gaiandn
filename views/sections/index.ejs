@@ -1,12 +1,12 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
+    <div class="container mt-4 text-right" dir="rtl">
         <div class="row mb-3">
             <div class="col">
-                <h1>All Sections</h1>
+                <h1>هەموو لقەکان</h1>
             </div>
             <div class="col-auto">
-                <a href="/sections/create" class="btn btn-primary">Create New Section</a>
+                <a href="/sections/create" class="btn btn-primary">زیادکردن لقی نوێ</a>
             </div>
         </div>
 
@@ -21,14 +21,15 @@
                         </div>
                         <div class="d-flex">
                             <form action="/sections/<%= section.id %>/update" method="post">
-                                <input type="hidden" name="status" value="<%= section.status === 'active' ? 'inactive' : 'active' %>">
-                                <button type="submit" class="badge <%= section.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                                    <%= section.status.toUpperCase() %>
+                                <input type="hidden" name="status"
+                                    value="<%= section.status === 'active' ? 'inactive' : 'active' %>">
+                                <button type="submit"
+                                    class="badge <%= section.status === 'active' ? 'bg-success' : 'bg-danger' %>">
+                                    <%= section.status==='active' ? 'چالاک' : 'ناچالاک' %>
                                 </button>
                             </form>
-
-                            <a href="/sections/<%= section.id %>/edit"
-                                class="btn btn-sm btn-outline-secondary ms-2" style="margin-left: 1rem;">Edit</a>
+                            <a href="/sections/<%= section.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2"
+                                style="margin:0 1rem;">دەستکاری</a>
                         </div>
                     </li>
                     <% }) %>

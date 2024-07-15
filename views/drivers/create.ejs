@@ -1,32 +1,32 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Create Driver</h1>
+    <div class="container mt-4 text-right">
+        <h1>زیادکردنی شۆفێر</h1>
         <form action="/drivers/store" method="POST">
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Enter driver name" required>
+                <label for="name">ناو</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="ناوی شۆفێر" required>
             </div>
             <div class="form-group">
-                <label for="phoneNumber">Phone Number:</label>
+                <label for="phoneNumber">ژمارەی مۆبایل:</label>
                 <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
-                    placeholder="Enter phone number" required>
+                    placeholder="ژمارەی مۆبایل" required>
             </div>
             <div class="form-group">
-                <label for="vehicleType">Vehicle Type:</label>
+                <label for="vehicleType">جۆری پێڕەو:</label>
                 <select id="vehicleType" name="vehicleType" class="form-control">
-                    <option value="motor">Motor</option>
-                    <option value="car">Car</option>
-                    <option value="truck">Truck</option>
+                    <option value="motor">ماتۆڕ</option>
+                    <option value="car">ئۆتۆمبێل</option>
+                    <option value="truck">بارهەڵگر</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="vehicleId">Vehicle ID:</label>
-                <input type="text" id="vehicleId" name="vehicleId" class="form-control" placeholder="Enter vehicle ID"
+                <label for="vehicleId">ژمارەی پێڕەو:</label>
+                <input type="text" id="vehicleId" name="vehicleId" class="form-control" placeholder="ژمارەی ئۆتۆمبێل،ماتۆڕ،بارهەڵگر"
                     required>
             </div>
             <div class="form-group">
-                <label for="cityId">City:</label>
+                <label for="cityId">شار:</label>
                 <select id="cityId" name="cityId" class="form-control">
                     <% cities.forEach(city=> { %>
                         <option value="<%= city.id %>">
@@ -36,29 +36,29 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Enter password"
+                <label for="password">وشەی تێپەڕ:</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="وشەی تێپەڕ"
                     required>
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
+                <label for="status">دۆخ:</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="active">چالاک</option>
+                    <option value="inactive">ناچالاک</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" class="form-control" placeholder="Enter address"
+                <label for="address">ناونیشان:</label>
+                <input type="text" id="address" name="address" class="form-control" placeholder="شار، ناوچە، شوێنێکی نزیک لێوەی"
                     required>
             </div>
             <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" class="form-control" placeholder="Enter price" required>
+                <label for="price">نرخ:</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="نرخ" required>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">زیادکردن</button>
         </form>
-        <a href="/drivers" class="mt-2 btn btn-secondary">Back to List</a>
+        <a href="/drivers" class="mt-2 btn btn-secondary">گەڕانەوە</a>
     </div>
 
     <%- include('../include/footer') %>

@@ -1,26 +1,26 @@
 <%- include('../include/header') %>
 
     <div class="container mt-4">
-        <h1>Create City</h1>
+        <h1>زیادکردنی شار</h1>
         <form action="/cities/store" method="POST">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Enter city name" required>
+            <div class="form-group text-right">
+                <label for="name">ناو:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="ناوی شار بنووسە" required>
             </div>
-            <div class="form-group">
-                <label for="status">Status:</label>
+            <div class="form-group text-right">
+                <label for="status">بارودەکان:</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="active">چالاک</option>
+                    <option value="inactive">ناچالاک</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" class="form-control" placeholder="1000" required>
+            <div class="form-group text-right">
+                <label for="price">نرخ:</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="1000" required >
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary float-right">دروست بکە</button>
+            <a href="/cities" class="mt-2 btn btn-secondary float-left">بگەڕێوە بۆ لیست</a>
         </form>
-        <a href="/cities" class="mt-2 btn btn-secondary">Back to List</a>
     </div>
 
     <%- include('../include/footer') %>

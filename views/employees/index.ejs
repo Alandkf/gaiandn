@@ -1,9 +1,9 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
+    <div class="container mt-4 text-right" dir="rtl">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>All Employees</h1>
-            <a href="/employees/create" class="btn btn-primary">Add New Employee</a>
+            <h1>هەموو کارمەندەکان</h1>
+            <a href="/employees/create" class="btn btn-primary">زیادکردنی کارمەند نوێ</a>
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -14,34 +14,37 @@
                             <h5 class="card-title">
                                 <%= employee.name %>
                             </h5>
-                            <p class="card-text"><strong>Salary:</strong>
+                            <p class="card-text"><strong>موچە:</strong>
                                 <%= employee.salary %>
                             </p>
-                            <p class="card-text"><strong>Phone Number:</strong>
+                            <p class="card-text"><strong>ژمارەی مۆبایل:</strong>
                                 <%= employee.phoneNumber %>
                             </p>
-                            <p class="card-text"><strong>Address:</strong>
+                            <p class="card-text"><strong>ناونیشان:</strong>
                                 <%= employee.address %>
                             </p>
-                            <p class="card-text"><strong>Job Type:</strong>
-                                <%= employee.jobType %>
+                            <p class="card-text"><strong>جۆری کار:</strong>
+                                <%= employee.jobType === 'employee' ? 'کارمەند' : 'بەڕێوەبەر' %>
                             </p>
-                            <p class="card-text"><strong>Section:</strong>
+
+                            <p class="card-text"><strong>بەش:</strong>
                                 <%= employee.Section.name %>
                             </p>
                             <p class="card-text">
-                                <strong>Status:</strong>
-                                <form action="/employees/<%= employee.id %>" method="POST">
-                                <button class="btn <%= employee.status === 'active' ? 'btn-success' : 'btn-danger' %>" 
-                                                type="submit" > <%= employee.status %>
+                                <strong>حالەت:</strong>
+                            <form action="/employees/<%= employee.id %>" method="POST">
+                                <button class="btn <%= employee.status === 'active' ? 'btn-success' : 'btn-danger' %>"
+                                    type="submit">
+                                    <%= employee.status==='active' ? 'چالاک' : 'ناچالاک' %>
                                 </button>
-                                <input type="hidden" name="status" value="<%= employee.status === 'active' ? 'inactive' : 'active' %>">
-                                </form>
+                                <input type="hidden" name="status"
+                                    value="<%= employee.status === 'active' ? 'inactive' : 'active' %>">
+                            </form>
                             </p>
-                           
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="/employees/<%= employee.id %>/edit" class="btn btn-sm btn-primary me-2">Edit</a>
+                            <a href="/employees/<%= employee.id %>/edit"
+                                class="btn btn-sm btn-primary me-2">دەستکاری</a>
                         </div>
                     </div>
                 </div>

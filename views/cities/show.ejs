@@ -1,28 +1,28 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>City Details</h1>
+    <div class="container mt-4 text-right">
+        <h1>وردەکاری شار</h1>
         <div class="card">
             <div class="card-body">
-                <p><strong>Name:</strong>
+                <p><strong>ناو:</strong>
                     <%= city.name %>
                 </p>
-                <p><strong>Status:</strong>
+                <p><strong>دۆخ:</strong>
                     <%= city.status %>
                 </p>
-                <p><strong>Price:</strong>
+                <p><strong>نرخ:</strong>
                     <%= city.price %>
                 </p>
-                <p><strong>Created At:</strong>
+                <p><strong>دروستکراوە لە:</strong>
                     <%= city.createdAt %>
                 </p>
-                <p><strong>Updated At:</strong>
+                <p><strong>نوێکراوە لە:</strong>
                     <%= city.updatedAt %>
                 </p>
             </div>
             <div class="card-footer">
-                <a href="/cities/<%= city.id %>/edit" class="btn btn-primary">Edit</a>
-                <a href="/cities" class="btn btn-secondary">Back to List</a>
+                <a href="/cities/<%= city.id %>/edit" class="btn btn-primary">دەستکاری</a>
+                <a href="/cities" class="btn btn-secondary">بگەڕێوە بۆ لیست</a>
             </div>
         </div>
     </div>

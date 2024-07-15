@@ -1,26 +1,26 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Create Section</h1>
+    <div class="container mt-4 text-right" dir="rtl">
+        <h1>زیادکردنی لق</h1>
         <form action="/sections/store" method="POST">
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <label for="name">ناو:</label>
+                <input placeholder="ناوی سیانی بنووسە" type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="note">Note:</label>
+                <label for="note">تێبینی:</label>
                 <input type="text" id="note" name="note" class="form-control">
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
+                <label for="status">حاڵەت:</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="active">چالاک</option>
+                    <option value="inactive">ناچالاک</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">زیادکردن</button>
         </form>
-        <a href="/sections" class="mt-2 btn btn-secondary">Back to List</a>
+        <a href="/sections" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>
 
     <%- include('../include/footer') %>

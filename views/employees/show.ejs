@@ -1,43 +1,43 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Employee Details</h1>
+    <div class="container mt-4 text-right" dir="rtl">
+        <h1>وردەکاریەکانی کارمەند</h1>
         <div class="card">
             <div class="card-body">
-                <p><strong>Name:</strong>
+                <p><strong>ناو:</strong>
                     <%= employee.name %>
                 </p>
-                <p><strong>Salary:</strong>
+                <p><strong>موچە:</strong>
                     <%= employee.salary %>
                 </p>
-                <p><strong>Phone Number:</strong>
+                <p><strong>ژمارەی مۆبایل:</strong>
                     <%= employee.phoneNumber %>
                 </p>
-                <p><strong>Address:</strong>
+                <p><strong>ناونیشان:</strong>
                     <%= employee.address %>
                 </p>
-                <p><strong>Job Type:</strong>
+                <p><strong>جۆری کار:</strong>
                     <%= employee.jobType %>
                 </p>
-                <p><strong>Note:</strong>
+                <p><strong>تێبینی:</strong>
                     <%= employee.note %>
                 </p>
-                <p><strong>Status:</strong>
+                <p><strong>حالەت:</strong>
                     <%= employee.status %>
                 </p>
-                <p><strong>Section:</strong>
+                <p><strong>بەش:</strong>
                     <%= employee.Section.name %>
                 </p>
-                <p><strong>Created At:</strong>
+                <p><strong>دروستکراوی:</strong>
                     <%= employee.createdAt %>
                 </p>
-                <p><strong>Updated At:</strong>
+                <p><strong>نوێکرایەوە:</strong>
                     <%= employee.updatedAt %>
                 </p>
             </div>
             <div class="card-footer">
-                <a href="/employees/<%= employee.id %>/edit" class="btn btn-primary">Edit</a>
-                <a href="/employees" class="btn btn-secondary">Back to List</a>
+                <a href="/employees/<%= employee.id %>/edit" class="btn btn-primary">دەستکاری</a>
+                <a href="/employees" class="btn btn-secondary">گەڕانەوە بۆ لیست</a>
             </div>
         </div>
     </div>
