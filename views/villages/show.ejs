@@ -1,31 +1,31 @@
 <%- include('../include/header') %>
 
     <div class="container mt-4">
-        <h1>Village Details</h1>
+        <h1>وردەکاری شارۆچەکە</h1>
         <div class="card">
             <div class="card-body">
-                <p><strong>Name:</strong>
+                <p><strong>ناو:</strong>
                     <%= village.name %>
                 </p>
-                <p><strong>Status:</strong>
+                <p><strong>حالەت:</strong>
                     <%= village.status %>
                 </p>
-                <p><strong>Price:</strong>
+                <p><strong>نرخ:</strong>
                     <%= village.price %>
                 </p>
-                <p><strong>City:</strong>
+                <p><strong>شار:</strong>
                     <%= village.City.name %>
                 </p>
-                <p><strong>Created At:</strong>
+                <p><strong>دروستکراوە لە:</strong>
                     <%= village.createdAt %>
                 </p>
-                <p><strong>Updated At:</strong>
+                <p><strong>دوایین گۆرانی:</strong>
                     <%= village.updatedAt %>
                 </p>
             </div>
             <div class="card-footer">
-                <a href="/villages/<%= village.id %>/edit" class="btn btn-primary">Edit</a>
-                <a href="/villages" class="btn btn-secondary">Back to List</a>
+                <a href="/villages/<%= village.id %>/edit" class="btn btn-primary">دەستکاری</a>
+                <a href="/villages" class="btn btn-secondary">گەڕانەوە بۆ لیست</a>
             </div>
         </div>
     </div>

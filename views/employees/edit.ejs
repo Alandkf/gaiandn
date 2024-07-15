@@ -1,63 +1,63 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Edit Employee</h1>
+    <div class="container mt-4 text-right" dir="rtl">
+        <h1>دەستکاری کارمەند</h1>
         <form action="/employees/<%= employee.id %>" method="POST">
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">ناو:</label>
                 <input type="text" id="name" name="name" value="<%= employee.name %>" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="salary">Salary:</label>
+                <label for="salary">موچە:</label>
                 <input type="number" id="salary" name="salary" value="<%= employee.salary %>" class="form-control"
                     required>
             </div>
             <div class="form-group">
-                <label for="phoneNumber">Phone Number:</label>
+                <label for="phoneNumber">ژمارەی مۆبایل:</label>
                 <input type="text" id="phoneNumber" name="phoneNumber" value="<%= employee.phoneNumber %>"
                     class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="address">Address:</label>
+                <label for="address">ناونیشان:</label>
                 <input type="text" id="address" name="address" value="<%= employee.address %>" class="form-control"
                     required>
             </div>
             <div class="form-group">
-                <label for="jobType">Job Type:</label>
+                <label for="jobType">جۆری کار:</label>
                 <select id="jobType" name="jobType" class="form-control">
-                    <option value="employee" <%=employee.jobType==='employee' ? 'selected' : '' %>>Employee</option>
-                    <option value="manager" <%=employee.jobType==='manager' ? 'selected' : '' %>>Manager</option>
+                    <option value="employee" <%=employee.jobType==='employee' ? 'selected' : '' %>>کارمەند</option>
+                    <option value="manager" <%=employee.jobType==='manager' ? 'selected' : '' %>>مەنەجەر</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label for="password">وشەی نهێنی:</label>
                 <input type="password" id="password" name="password" value="<%= employee.password %>"
                     class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="note">Note:</label>
+                <label for="note">تێبینی:</label>
                 <input type="text" id="note" name="note" value="<%= employee.note %>" class="form-control">
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
+                <label for="status">حالەت:</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active" <%=employee.status==='active' ? 'selected' : '' %>>Active</option>
-                    <option value="inactive" <%=employee.status==='inactive' ? 'selected' : '' %>>Inactive</option>
+                    <option value="active" <%=employee.status==='active' ? 'selected' : '' %>>چالاک</option>
+                    <option value="inactive" <%=employee.status==='inactive' ? 'selected' : '' %>>ناچالاک</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="sectionId">Section:</label>
+                <label for="sectionId">بەش:</label>
                 <select id="sectionId" name="sectionId" class="form-control">
                     <% sections.forEach(section=> { %>
-                        <option value="<%= section.id %>" <%=section.id===employee.sectionId ? 'selected' : '' %>><%=
-                                section.name %>
+                        <option value="<%= section.id %>" <%=section.id===employee.sectionId ? 'selected' : '' %>>
+                            <%= section.name %>
                         </option>
                         <% }) %>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">نوێکردنەوە</button>
         </form>
-        <a href="/employees" class="mt-2 btn btn-secondary">Back to List</a>
+        <a href="/employees" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>
 
     <%- include('../include/footer') %>

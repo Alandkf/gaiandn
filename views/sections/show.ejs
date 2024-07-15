@@ -1,28 +1,28 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Section Details</h1>
+    <div class="container mt-4 text-right" dir="rtl">
+        <h1>وردەکاریەکانی لەق</h1>
         <div class="card">
             <div class="card-body">
-                <p><strong>Name:</strong>
+                <p><strong>ناو:</strong>
                     <%= section.name %>
                 </p>
-                <p><strong>Note:</strong>
+                <p><strong>تێبینی:</strong>
                     <%= section.note %>
                 </p>
-                <p><strong>Status:</strong>
-                    <%= section.status %>
+                <p><strong>حاڵەت:</strong>
+                    <%= section.status==='active' ? 'چالاک' : 'ناچالاک' %>
                 </p>
-                <p><strong>Created At:</strong>
+                <p><strong>دروستکراوی:</strong>
                     <%= section.createdAt %>
                 </p>
-                <p><strong>Updated At:</strong>
+                <p><strong>نوێکرایەوە:</strong>
                     <%= section.updatedAt %>
                 </p>
             </div>
             <div class="card-footer">
-                <a href="/sections/<%= section.id %>/edit" class="btn btn-primary">Edit</a>
-                <a href="/sections" class="btn btn-secondary">Back to List</a>
+                <a href="/sections/<%= section.id %>/edit" class="btn btn-primary">دەستکاری</a>
+                <a href="/sections" class="btn btn-secondary">گەڕانەوە بۆ لیست</a>
             </div>
         </div>
     </div>

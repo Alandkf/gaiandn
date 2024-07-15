@@ -1,25 +1,25 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
-        <h1>Create Village</h1>
+    <div class="container mt-4 text-right">
+        <h1>زیادکردنی شارۆچکە </h1>
         <form action="/villages/store" method="POST">
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">ناو:</label>
                 <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
+                <label for="status">حالەت:</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="active">چالاک</option>
+                    <option value="inactive">ناچالاک</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="price">Price:</label>
+                <label for="price">نرخ:</label>
                 <input type="number" id="price" name="price" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="cityId">City:</label>
+                <label for="cityId">شار:</label>
                 <select id="cityId" name="cityId" class="form-control">
                     <% cities.forEach(city=> { %>
                         <option value="<%= city.id %>">
@@ -28,9 +28,9 @@
                         <% }) %>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">دروستکردن</button>
         </form>
-        <a href="/villages" class="mt-2 btn btn-secondary">Back to List</a>
+        <a href="/villages" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>
 
     <%- include('../include/footer') %>

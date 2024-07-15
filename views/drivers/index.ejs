@@ -1,12 +1,12 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4">
+    <div class="container mt-4 text-right">
         <div class="row mb-3">
             <div class="col">
-                <h1>All Drivers</h1>
+                <h1>هەموو شۆفێرەکان</h1>
             </div>
             <div class="col-auto">
-                <a href="/drivers/create" class="btn btn-primary">Create New Driver</a>
+                <a href="/drivers/create" class="btn btn-primary">زیادکردنی شۆفێری نوێ</a>
             </div>
         </div>
 
@@ -25,12 +25,12 @@
                                     value="<%= driver.status === 'active' ? 'inactive' : 'active' %>">
                                 <button type="submit"
                                     class="badge <%= driver.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                                    <%= driver.status.toUpperCase() %>
+                                    <%= driver.status=="active"?"چالاک":"ناچالاک" %>
                                 </button>
                             </form>
                             <a href="/drivers/<%= driver.id %>/edit"
-                                class="btn btn-sm btn-outline-secondary ms-2" style="margin: 0 1rem;">Edit</a>
-                            <a href="/drivers/<%= driver.id %>/show" class="btn btn-sm btn-secondary ms-2">View Details</a>
+                                class="btn btn-sm btn-outline-secondary ms-2" style="margin: 0 1rem;">دەستکاری</a>
+                            <a href="/drivers/<%= driver.id %>/show" class="btn btn-sm btn-secondary ms-2">بینینی زیاتر</a>
                         </div>
                     </li>
                     <% }) %>
