@@ -1,5 +1,112 @@
 <%- include('include/header') %>
-    <main>
-        <h1>here is the Dashboard</h1>
-    </main>
-<%- include('include/footer') %>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sections Box -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center shadow-sm" id="sectionBox" onclick="window.location.href='/sections'">
+                    <div class="card-body">
+                        <h5 class="card-title">ژمارەی لقەکان</h5>
+                        <p class="card-text display-4">
+                            <%= toKurdishNumbers(sections.length) %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employees Box -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center shadow-sm" id="employeeBox" onclick="window.location.href='/employees'">
+                    <div class="card-body">
+                        <h5 class="card-title">ژمارەی کارمەندەکان</h5>
+                        <p class="card-text display-4">
+                            <%= toKurdishNumbers(employees.length) %>
+                        </p>
+                        <p class="card-text">بەڕێوەبەران: <%= toKurdishNumbers(managersCount) %>
+                        </p>
+                        <p class="card-text">کارمەندەکان: <%= toKurdishNumbers(employeesCount) %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cities Box -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center shadow-sm" id="cityBox" onclick="window.location.href='/cities'">
+                    <div class="card-body">
+                        <h5 class="card-title">ژمارەی شارەکان</h5>
+                        <p class="card-text display-4">
+                            <%= toKurdishNumbers(cities.length) %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Villages Box -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center shadow-sm" id="villageBox" onclick="window.location.href='/villages'">
+                    <div class="card-body">
+                        <h5 class="card-title">ژمارەی شارۆچکەکان</h5>
+                        <p class="card-text display-4">
+                            <%= toKurdishNumbers(villages.length) %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drivers Box -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center shadow-sm" id="driverBox" onclick="window.location.href='/drivers'">
+                    <div class="card-body">
+                        <h5 class="card-title">ژمارەی شۆفێران</h5>
+                        <p class="card-text display-4">
+                            <%= toKurdishNumbers(drivers.length) %>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="card-text">شۆفێرانی ماتۆڕ: <%= toKurdishNumbers(motorDriversCount) %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text">شۆفێرانی ئۆتۆمبێل: <%= toKurdishNumbers(carDriversCount) %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text">شۆفێرانی بارهەڵگر: <%= toKurdishNumbers(truckDriversCount) %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #f8f9fa;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #101820;
+        }
+
+        .card-text.display-4 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FEE715;
+        }
+
+        .card-text {
+            color: #101820;
+        }
+    </style>
+
+    <%- include('include/footer') %>

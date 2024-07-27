@@ -7,6 +7,7 @@ const employeeRoutes = require('./routes/employeeRoutes');
 const sectionRoutes = require('./routes/sectionRoutes');
 const villageRoutes = require('./routes/villageRoutes');
 const driverRoutes = require('./routes/driverRoutes');
+const indexRoutes = require('./routes/indexRoutes');
 
 const app = express();
 
@@ -24,10 +25,11 @@ app.use('/employees', employeeRoutes);
 app.use('/sections', sectionRoutes);
 app.use('/villages', villageRoutes);
 app.use('/drivers', driverRoutes);
+app.use('/', indexRoutes);
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+// app.get('/', (req, res) => {
+//     res.render('index');
+// });
 
 // Sync database and start server
 sequelize.sync().then(() => {

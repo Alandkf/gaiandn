@@ -1,13 +1,31 @@
-*{
-    background-color: rgb(213, 197, 197);
-}
-body {
-    direction: rtl;
-    text-align: right;
-}
+    #body {
+        direction: rtl;
+        text-align: right;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        background-color: #101820;
+        
+    }
 
 input{
     direction: rtl;
     text-align: right;
+}
 
+main {
+        flex: 0 0 83% !important;
+}
+
+#logo-img{
+    width: 75px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+h1,h2,h3,h4,h5,h6, label{
+    color: white;
 }

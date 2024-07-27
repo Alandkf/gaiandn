@@ -24,11 +24,11 @@
                                 <input type="hidden" name="status"
                                     value="<%= section.status === 'active' ? 'inactive' : 'active' %>">
                                 <button type="submit"
-                                    class="badge <%= section.status === 'active' ? 'bg-success' : 'bg-danger' %>">
+                                    class="btn  <%= section.status === 'active' ? 'btn-primary' : 'btn-secondary' %>">
                                     <%= section.status==='active' ? 'چالاک' : 'ناچالاک' %>
                                 </button>
                             </form>
-                            <a href="/sections/<%= section.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2"
+                            <a href="/sections/<%= section.id %>/edit" class="btn btn-success ms-2"
                                 style="margin:0 1rem;">دەستکاری</a>
                         </div>
                     </li>
