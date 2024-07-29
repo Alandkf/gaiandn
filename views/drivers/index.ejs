@@ -1,40 +1,120 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4 text-right">
-        <div class="row mb-3">
-            <div class="col">
-                <h1>هەموو شۆفێرەکان</h1>
-            </div>
-            <div class="col-auto">
-                <a href="/drivers/create" class="btn btn-primary">زیادکردنی شۆفێری نوێ</a>
+    <nav class="navbar bg-body-tertiary container mt-4 text-right" style="border-radius: 1rem;" dir="rtl">
+        <div class="container-fluid">
+            <div class="row align-items-center" style="width: 100%;">
+                <div class="col-auto" style="padding: 0; margin: 0; width:70%;">
+                    <form id="searchForm" class="input-group" style="padding: 0rem; width:100%;" action="/drivers"
+                        method="get">
+                        <input type="text" class="form-control" placeholder="گەڕان بەپێی ناو یان ئایدی"
+                            aria-label="Search" name="findKey" id="searchInput" aria-describedby="basic-addon1"
+                            style="padding: 0rem 1rem; margin: 0rem;" autocomplete="off" value="<%= findKey %>">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </form>
+                </div>
+                <div class="col-auto">
+                    <a href="/employees/create" class="btn btn-primary"
+                        style="text-wrap: nowrap; background-color: #ab15d4; border: 0px solid;">
+                        <i class="fas fa-plus"></i>
+                        زیادکردن کارمەندێکی نوێ
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
             </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <ul class="list-group list-group-flush">
-                <% drivers.forEach(driver=> { %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>
-                                <%= driver.name %>
-                            </strong> - <%= driver.phoneNumber %> - <%= driver.vehicleType === 'motor' ? 'ماتۆڕ' : driver.vehicleType === 'car' ? 'ئۆتۆمبێل' : 'بارهەڵگر' %>
-                        </div>
-                        <div class="d-flex">
-                            <form action="/drivers/<%= driver.id %>/update" method="post">
-                                <input type="hidden" name="status"
-                                    value="<%= driver.status === 'active' ? 'inactive' : 'active' %>">
-                                <button type="submit"
-                                    class="badge <%= driver.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                                    <%= driver.status=="active"?"چالاک":"ناچالاک" %>
+    <div class="card container mt-4 text-right" dir="rtl">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="8">شۆفێران</th>
+                    </tr>
+                    <tr class="text-center">
+                        <th style="width: 1%;">ID</th>
+                        <th style="width: 20%;">ناوی شۆفێر</th>
+                        <th style="width: 15%;">ژمارەی مۆبایل</th>
+                        <th style="width: 15%;">جۆری پێڕەو</th>
+                        <th style="width: 10%;">حالەت</th>
+                        <th style="width: 10%;">دەستکاری</th>
+                        <th style="width: 10%; text-wrap: nowrap;">وردەکاری</th>
+                        <th style="width: 1%; white-space: nowrap;">سڕینەوە</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% drivers.forEach(driver=> { %>
+                        <tr>
+                            <td>
+                                <%= driver.id %>
+                            </td>
+                            <td><strong>
+                                    <%= driver.name %>
+                                </strong></td>
+                            <td>
+                                <%= driver.phoneNumber %>
+                            </td>
+                            <td class="text-center">
+                                <%= driver.vehicleType==='motor' ? 'ماتۆڕ' : driver.vehicleType==='car' ? 'ئۆتۆمبێل'
+                                    : 'بارهەڵگر' %>
+                            </td>
+                            <td class="text-center">
+                                <form action="/drivers/<%= driver.id %>/update" method="post" class="d-inline">
+                                    <input type="hidden" name="status"
+                                        value="<%= driver.status === 'active' ? 'inactive' : 'active' %>">
+                                    <button type="submit"
+                                        class="btn <%= driver.status === 'active' ? 'btn-primary' : 'btn-secondary' %> btn-sm">
+                                        <%= driver.status==='active' ? 'چالاک' : 'ناچالاک' %>
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="text-center">
+                                <a href="/drivers/<%= driver.id %>/edit" class="btn btn-sm btn-success">دەستکاری</a>
+                            </td>
+                            <td class="text-center">
+                                <a href="/drivers/<%= driver.id %>/show" class="btn btn-info btn-sm"
+                                    style="text-wrap: nowrap;">وردەکاری</a>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal-<%= driver.id %>">
+                                    سڕینەوە
                                 </button>
-                            </form>
-                            <a href="/drivers/<%= driver.id %>/edit"
-                                class="btn btn-sm btn-outline-secondary ms-2" style="margin: 0 1rem;">دەستکاری</a>
-                            <a href="/drivers/<%= driver.id %>/show" class="btn btn-sm btn-secondary ms-2">بینینی زیاتر</a>
-                        </div>
-                    </li>
-                    <% }) %>
-            </ul>
+
+                                <!-- Delete Confirmation Modal -->
+                                <div class="modal fade" id="deleteModal-<%= driver.id %>" tabindex="-1"
+                                    aria-labelledby="deleteModalLabel-<%= driver.id %>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel-<%= driver.id %>">دڵنیایی
+                                                    لە سڕینەوەی ئەم شۆفێرە؟</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>دڵنیایی کە دەتەوێت شۆفێری <strong>
+                                                        <%= driver.name %>
+                                                    </strong> بسڕیتەوە؟</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">پاشگەزبوونەوە</button>
+                                                <form action="/drivers/<%= driver.id %>/delete" method="post"
+                                                    class="d-inline">
+                                                    <button type="submit" class="btn btn-danger">سڕینەوە</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
         </div>
     </div>
 

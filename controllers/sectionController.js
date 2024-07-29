@@ -1,9 +1,26 @@
 const { Sections } = require('../models');
+const { Op } = require('sequelize');
 
 exports.index = async (req, res) => {
-    const sections = await Sections.findAll();
-    res.render('sections/index', { sections });
-}; 
+    const findKey = req.query.findKey || '';
+    const sections = await Sections.findAll({
+        where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                },
+                {
+                    id: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                }
+            ]
+        }
+    });
+    res.render('sections/index', { sections, findKey });
+};
 
 exports.show = async (req, res) => {
     const section = await Sections.findByPk(req.params.id);

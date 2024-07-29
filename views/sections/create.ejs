@@ -4,21 +4,22 @@
         <h1>زیادکردنی لق</h1>
         <form action="/sections/store" method="POST">
             <div class="form-group">
+                <div class="d-flex align-items-center">
                 <label for="name">ناو:</label>
-                <input placeholder="ناوی سیانی بنووسە" type="text" id="name" name="name" class="form-control" required>
+                    <input placeholder="ناوی سیانی بنووسە" type="text" id="name" name="name" class="form-control"
+                        required>
+                    <label for="status" class="ml-3 mb-0">حاڵەت:</label>
+                    <select id="status" name="status" class="form-control ml-2">
+                        <option value="active">چالاک</option>
+                        <option value="inactive">ناچالاک</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label for="note">تێبینی:</label>
                 <input type="text" id="note" name="note" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="status">حاڵەت:</label>
-                <select id="status" name="status" class="form-control">
-                    <option value="active">چالاک</option>
-                    <option value="inactive">ناچالاک</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">زیادکردن</button>
+            <button type="submit" class="btn btn-primary"  style="text-wrap: nowrap; background-color: #ab15d4; border: 0px solid;">زیادکردن</button>
         </form>
         <a href="/sections" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>

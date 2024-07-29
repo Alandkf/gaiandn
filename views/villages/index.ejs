@@ -1,44 +1,126 @@
 <%- include('../include/header') %>
 
-  <div class="container mt-4 text-right">
-    <div class="row mb-3">
-      <div class="col">
-        <h1>هەموو شارۆچکەکان</h1>
+<nav
+  class="navbar bg-body-tertiary container mt-4 text-right"
+  style="border-radius: 1rem"
+  dir="rtl"
+>
+  <div class="container-fluid">
+    <div class="row align-items-center" style="width: 100%">
+      <div class="col-auto" style="padding: 0; margin: 0; width: 70%">
+        <form
+          id="searchForm"
+          class="input-group"
+          style="padding: 0rem; width: 100%"
+          action="/villages"
+          method="get"
+        >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="گەڕان بەپێی ناو یان ئایدی"
+            aria-label="Search"
+            name="findKey"
+            id="searchInput"
+            aria-describedby="basic-addon1"
+            style="padding: 0rem 1rem; margin: 0rem"
+            autocomplete="off"
+            value="<%= findKey %>"
+          />
+          <span class="input-group-text" id="basic-addon1">
+            <i class="fas fa-search"></i>
+          </span>
+        </form>
       </div>
       <div class="col-auto">
-        <a href="/villages/create" class="btn btn-primary">شارۆچێکی نوێ بەکاربهێنە</a>
+        <a
+          href="/villages/create"
+          class="btn btn-primary"
+          style="
+            text-wrap: nowrap;
+            background-color: #ab15d4;
+            border: 0px solid;
+          "
+        >
+          <i class="fas fa-plus"></i>
+          شارۆچێکی نوێ بەکاربهێنە
+          <i class="fas fa-plus"></i>
+        </a>
       </div>
     </div>
-
-    <div class="card">
-      <ul class="list-group list-group-flush">
-        <% villages.forEach(village=> { %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div>
-              <strong>
-                <%= village.name %>
-              </strong>
-              - <span class="badge bg-primary">
-                <%= village.price %>
-              </span>
-              <br />
-              <strong>شار:</strong>
-              <%= village.City.name %>
-            </div>
-            <div class="d-flex">
-              <form action="/villages/<%= village.id %>/update" method="post">
-                <input type="hidden" name="status" value="<%= village.status === 'active' ? 'inactive' : 'active' %>">
-                <button type="submit" class="badge <%= village.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                  <%= village.status==='active' ? 'چالاک' : 'ناچالاک' %>
-                </button>
-              </form>
-              <a href="/villages/<%= village.id %>/edit" class="btn btn-sm btn-outline-secondary ms-2"
-                style="margin: 0 1rem;">دەستکاری</a>
-            </div>
-          </li>
-          <% }) %>
-      </ul>
-    </div>
   </div>
+</nav>
 
-  <%- include('../include/footer') %>
+<div class="card container mt-4 text-right" dir="rtl">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center" colspan="8">هەموو شارۆچکەکان</th>
+      </tr>
+      <tr class="text-center">
+        <th style="width: 1%">ID</th>
+        <th style="width: 30%;">ناوی شارۆچکە</th>
+        <th style="width: 30%">مووچە</th>
+        <th style="width: 30%">شار</th>
+        <th style="width: 1%; white-space: nowrap">حالەت</th>
+        <th style="width: 1%; white-space: nowrap">دەستکاری</th>
+        <th style="width: 1%; white-space: nowrap">وردەکاری</th>
+        <th style="width: 1%; white-space: nowrap">سڕینەوە</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% villages.forEach(village=> { %>
+      <tr>
+        <td class="text-center"><%= village.id %></td>
+        <td><strong> <%= village.name %> </strong></td>
+        <td class="text-center"><%= village.price %></td>
+        <td class="text-center">
+          <%= village.City.name %>
+        </td>
+        <td class="text-center">
+          <form
+            action="/villages/<%= village.id %>/update"
+            method="post"
+            class="d-inline"
+          >
+            <input
+              type="hidden"
+              name="status"
+              value="<%= village.status === 'active' ? 'inactive' : 'active' %>"
+            />
+            <button
+              type="submit"
+              class="btn <%= village.status === 'active' ? 'btn-primary' : 'btn-secondary' %>"
+            >
+              <%= village.status==='active' ? 'چالاک' : 'ناچالاک' %>
+            </button>
+          </form>
+        </td>
+        <td>
+          <a
+            href="/villages/<%= village.id %>/edit"
+            class="btn btn-sm btn-success"
+            >دەستکاری</a
+          >
+        </td>
+        <td>
+          <a href="/villages/<%= village.id %>/show" class="btn btn-info"
+            >وردەکاری</a
+          >
+        </td>
+        <td>
+          <form
+            action="/villages/<%= village.id %>/delete"
+            method="post"
+            class="d-inline"
+          >
+            <button type="submit" class="btn btn-danger">سڕینەوە</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../include/footer') %>

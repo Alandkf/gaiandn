@@ -1,14 +1,18 @@
 <%- include('../include/header') %>
 
     <div class="container mt-4 text-right">
-        <h1>وردەکاری شار</h1>
+        <h1>وردەکاری دەربارەی شارەکە</h1>
         <div class="card">
             <div class="card-body">
+                <p class="text-right">
+                    <strong>ژمارەی ID شارەکە: </strong>
+                    <%= city.id %>
+                </p>
                 <p><strong>ناو:</strong>
                     <%= city.name %>
                 </p>
                 <p><strong>دۆخ:</strong>
-                    <%= city.status %>
+                    <%= city.status==='active' ? 'چالاک' : 'ناچالاک' %>
                 </p>
                 <p><strong>نرخ:</strong>
                     <%= city.price %>

@@ -1,9 +1,13 @@
 <%- include('../include/header') %>
 
     <div class="container mt-4">
-        <h1>Driver Details</h1>
+        <h1>وردەکاری دەربارەی شۆفێرەکە</h1>
         <div class="card">
             <div class="card-body">
+                                <p class="text-right">
+                                    <strong>ژمارەی ID شۆفێر: </strong>
+                                    <%= driver.id %>
+                                </p>
                 <p><strong>ناو:</strong>
                     <%= driver.name %>
                 </p>

@@ -1,8 +1,22 @@
 const { Employees, Sections } = require('../models');
-
+const { Op } = require('sequelize');
 exports.index = async (req, res) => {
-    const employees = await Employees.findAll({ include: Sections });
-    res.render('employees/index', { employees });
+    const findKey = req.query.findKey || '';
+    const employees = await Employees.findAll({ include: Sections,where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                },
+                {
+                    id: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                }
+            ]
+        } });
+    res.render('employees/index', { employees, findKey: findKey });
 };
 
 exports.show = async (req, res) => {

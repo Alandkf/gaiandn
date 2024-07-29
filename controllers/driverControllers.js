@@ -1,8 +1,22 @@
 const { Drivers, Cities } = require('../models');
-
+const { Op } = require('sequelize');
 exports.index = async (req, res) => {
-    const drivers = await Drivers.findAll({ include: Cities });
-    res.render('drivers/index', { drivers: drivers });
+    const findKey = req.query.findKey || '';
+    const drivers = await Drivers.findAll({ include: Cities,where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                },
+                {
+                    id: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                }
+            ]
+        } });
+    res.render('drivers/index', { drivers, findKey: findKey });
 };
 
 exports.show = async (req, res) => {

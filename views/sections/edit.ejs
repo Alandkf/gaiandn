@@ -1,26 +1,28 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4 text-right" dir="rtl">
-        <h1>دەستکاری لقەکان</h1>
-        <form action="/sections/<%= section.id %>/update" method="POST">
-            <div class="form-group">
+<div class="container mt-4 text-right" dir="rtl">
+    <h1>دەستکاری لقەکان</h1>
+    <form action="/sections/<%= section.id %>/update" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="name">ناو:</label>
                 <input type="text" id="name" name="name" value="<%= section.name %>" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label for="note">تێبینی:</label>
-                <input type="text" id="note" name="note" value="<%= section.note %>" class="form-control">
-            </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="status">حاڵەت:</label>
                 <select id="status" name="status" class="form-control">
                     <option value="active" <%=section.status==='active' ? 'selected' : '' %>>چالاک</option>
                     <option value="inactive" <%=section.status==='inactive' ? 'selected' : '' %>>ناچالاک</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">نوێکردنەوە</button>
-        </form>
-        <a href="/sections" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
-    </div>
+        </div>
+        <div class="form-group">
+            <label for="note">تێبینی:</label>
+            <input type="text" id="note" name="note" value="<%= section.note %>" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">نوێکردنەوە</button>
+    </form>
+    <!-- <a href="/sections" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a> -->
+</div>
 
-    <%- include('../include/footer') %>
+<%- include('../include/footer') %>

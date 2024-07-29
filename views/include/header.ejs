@@ -10,43 +10,100 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-rtl@4.6.0/dist/css/bootstrap-rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3.2.47"></script>
     <style>
         .sidebar {
-            position: relative;
+            position: fixed;
             top: 0;
             right: 0;
             bottom: 0;
-            /* width: 17%; */
-            background-color: #FEE715;
+            background-color: #7a8a99;
             padding: 20px;
             height: 100vh;
-            display: flex !important;
+            display: flex;
             flex-direction: column;
-            gap: .5rem;
-            flex: auto;
+            gap: 1rem;
+            transition: width 0.3s;
+            z-index: 1000;
+            width: 15%;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+            padding: 10px;
         }
 
         .sidebar a {
-            display: block;
-            color: #101820;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
             padding: 10px;
             text-decoration: none;
             font-size: 1.25rem;
+            white-space: nowrap;
+        }
+
+        .sidebar a i {
+            margin-left: 1rem;
+            /* Add space between icon and text */
         }
 
         .sidebar a:hover {
-            background-color: #101820;
-            color: #FEE715;
+            background-color: #b5c5d1;
+            color: #101820;
         }
 
+        .sidebar.collapsed a {
+            justify-content: center;
+            padding: 10px 0;
+            font-size: 0;
+        }
+
+        .sidebar.collapsed a i {
+            font-size: 1.5rem;
+            margin-left: 0;
+            /* Remove margin when collapsed */
+        }
+
+        .sidebar.collapsed #logo {
+            display: none;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .toggle-btn:focus {
+            outline: none;
+        }
+
+        main {
+            margin-right: 240px;
+            transition: margin-right 0.3s;
+        }
+
+        .sidebar.collapsed+main {
+            margin-right: 100px;
+        }
     </style>
 </head>
 
-<body id="body" dir="rtl" class="">
-    <div class="sidebar">
-        <h2><img src="/images/logo.png" alt="logo image" srcset="" id="logo-img"
-             onclick="window.location.href='/'"style="width: 75px;">گەیاندن</h2>
-        
+<body id="body" dir="rtl">
+    <div class="sidebar" id="sidebar">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="/" id="logo" class="text-center">
+                <h2>Hiload</h2>
+            </a>
+            <button class="toggle-btn" id="toggleBtn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <a class="nav-link" href="/"><i class="fa-solid fa-chart-bar"></i> داشبۆرد</a>
         <a class="nav-link" href="/sections"><i class="fa-solid fa-location-dot"></i> لقەکان</a>
         <a class="nav-link" href="/employees"><i class="fa-solid fa-users"></i> کارمەندەکان</a>
         <a class="nav-link" href="/cities"><i class="fa-solid fa-city"></i> شارەکان</a>
@@ -54,61 +111,24 @@
         <a class="nav-link" href="/drivers"><i class="fa-solid fa-id-card"></i> شۆفێران</a>
     </div>
 
-    <main style="flex: 0 0 83%;">
-
-        <nav id="Main-H-navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul id="H-navbar" class="navbar-nav ml-auto" dir="rtl">
-                    <li class="nav-item" id="search-form">
-                        <form class="form-inline my-2 my-lg-0" style="width: 100%; gap: 1rem;">
-                            <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="گەڕان" aria-label="Search">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </li>
-                    <li class="nav-item" id="profile-image">
-                        <img src="/images/Aland.JPG" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px;">
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <style>
-            #Main-H-navbar{
-                width: 100% !important;
-                background-color: #008080  !important;
-                /* height: auto; */
+    <main>
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('collapsed');
             }
-            #H-navbar{
-                width: 100%;
-                /* background-color: blue; */
-                height: 50px;
-                display: flex;
-                align-items: center;
-                /* gap: 1rem; */
-                justify-content: space-between;
-                flex-wrap: wrap;
-                margin-bottom: 10px;
-                font-weight: 600;
-                color: #fff;
-}
-            #search-form{
-                display: flex;
-                /* background-color: red; */
-                align-items: center;
-                justify-content: center;
-                flex: 0 0 80%;
-                gap: 1rem;
-            }
-            #search-input{
-                width: 80%;
-                /* padding: 5px; */
-            }
-            #profile-image{
-                flex: 0 0 auto;
-            }
-        </style>
 
+            document.getElementById('toggleBtn').addEventListener('click', toggleSidebar);
 
-        <style>
-            
-        </style>
+            function checkWidth() {
+                const sidebar = document.getElementById('sidebar');
+                if (window.innerWidth <= 1048) {
+                    sidebar.classList.add('collapsed');
+                } else {
+                    sidebar.classList.remove('collapsed');
+                }
+            }
+
+            window.addEventListener('resize', checkWidth);
+            window.addEventListener('load', checkWidth);
+        </script>

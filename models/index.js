@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
+// const { Op } = require('sequelize');
 const sequelize = require('../config/db');
 const Drivers = require('./Drivers');
-
 const Cities = require('./Cities');
 const Employees = require('./Employees')(sequelize, DataTypes);
 const Sections = require('./Sections')(sequelize, DataTypes);

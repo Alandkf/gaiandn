@@ -1,41 +1,123 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4 text-right" >
-        <div class="row mb-3">
-            <div class="col">
-                <h1>هەموو شارەکان</h1>
-            </div>
-            <div class="col-auto">
-                <a href="/cities/create" class="btn btn-primary">زیادکردنی شار </a>
-            </div>
-        </div>
-
-        <div class="card">
-            <ul class="list-group list-group-flush">
-                <% cities.forEach(city=> { %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>
-                                <%= city.name %> - <%= city.price %>
-                            </strong>
-                        </div>
-                        <div class="d-flex" >
-                            <form action="/cities/<%= city.id %>/update" method="post">
-                                <input type="hidden" name="status"
-                                    value="<%= city.status === 'active' ? 'inactive' : 'active' %>">
-                                <button type="submit"
-                                    class="badge <%= city.status === 'active' ? 'bg-success' : 'bg-danger' %>">
-                                    <%= city.status=="active"?"چالاک":"ناچالاک" %>
-                                </button>
-                            </form>
-                            <a href="/cities/<%= city.id %>/edit" style="margin: 0 1rem;"
-                                class="btn btn-sm btn-outline-secondary ms-2" >دەستکاری</a>
-                            <a href="/cities/<%= city.id %>/show" class="btn btn-sm btn-secondary ms-2">وەردەکاری</a>
-                        </div>
-                    </li>
-                    <% }) %>
-            </ul>
-        </div>
+<nav
+  class="navbar bg-body-tertiary container mt-4 text-right"
+  style="border-radius: 1rem"
+  dir="rtl"
+>
+  <div class="container-fluid">
+    <div class="row align-items-center" style="width: 100%">
+      <!-- <div class="col">
+                        <h1>هەموو لقەکان</h1>
+                    </div> -->
+      <div class="col-auto" style="padding: 0; margin: 0; width: 70%">
+        <form
+          id="searchForm"
+          class="input-group"
+          style="padding: 0rem; width: 100%"
+          action="/cities"
+          method="get"
+        >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="گەڕان بەپێی ناو یان ئایدی"
+            aria-label="Search"
+            name="findKey"
+            id="searchInput"
+            aria-describedby="basic-addon1"
+            style="padding: 0rem 1rem; margin: 0rem"
+            autocomplete="off"
+            value="<%= findKey %>"
+          />
+          <span class="input-group-text" id="basic-addon1">
+            <i class="fas fa-search"></i>
+          </span>
+        </form>
+      </div>
+      <div class="col-auto">
+        <a
+          href="/sections/create"
+          class="btn btn-primary"
+          style="
+            text-wrap: nowrap;
+            background-color: #ab15d4;
+            border: 0px solid;
+          "
+        >
+          <i class="fas fa-plus"></i>
+          زیادکردن شاری نوێ
+          <i class="fas fa-plus"></i>
+        </a>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <%- include('../include/footer') %>
+<div class="card container mt-4 text-right" dir="rtl">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center" colspan="8">شارەکان</th>
+      </tr>
+      <tr class="text-center">
+        <th style="width: 1%">ID</th>
+        <th style="width: 50%; text-wrap: nowrap">ناوی شار</th>
+        <th style="width: 50%">مووچە</th>
+        <th style="width: 1%; white-space: nowrap">حالەت</th>
+        <th style="width: 1%; white-space: nowrap">دەستکاری</th>
+        <th style="width: 1%; white-space: nowrap">وردەکاری</th>
+        <th style="width: 1%; white-space: nowrap">سڕینەوە</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cities.forEach(city=> { %>
+      <tr>
+        <td class="text-center"><%= city.id %></td>
+        <td style="text-wrap: nowrap"><strong> <%= city.name %> </strong></td>
+        <td class="text-center" style="text-wrap: nowrap"><%= city.price %></td>
+        <td class="text-center">
+          <form
+            action="/cities/<%= city.id %>/update"
+            method="post"
+            class="d-inline"
+          >
+            <input
+              type="hidden"
+              name="status"
+              value="<%= city.status === 'active' ? 'inactive' : 'active' %>"
+            />
+            <button
+              type="submit"
+              class="btn <%= city.status === 'active' ? 'btn-primary' : 'btn-secondary' %>"
+            >
+              <%= city.status==='active' ? 'چالاک' : 'ناچالاک' %>
+            </button>
+          </form>
+        </td>
+        <td>
+          <a href="/cities/<%= city.id %>/edit" class="btn btn-sm btn-success"
+            >دەستکاری</a
+          >
+        </td>
+        <td>
+          <a href="/cities/<%= city.id %>/show" class="btn btn-info"
+            >وردەکاری</a
+          >
+        </td>
+        <td>
+          <form
+            action="/cities/<%= city.id %>/delete"
+            method="post"
+            class="d-inline"
+          >
+            <button type="submit" class="btn btn-danger">سڕینەوە</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../include/footer') %>

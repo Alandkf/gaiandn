@@ -1,8 +1,25 @@
 const { Cities } = require('../models');
+const { Op } = require('sequelize');
 
 exports.index = async (req, res) => {
-    const cities = await Cities.findAll();
-    res.render('cities/index', { cities });
+     const findKey = req.query.findKey || '';
+    const cities = await Cities.findAll({
+        where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                },
+                {
+                    id: {
+                        [Op.like]: `%${findKey}%`
+                    }
+                }
+            ]
+        }
+    });
+    res.render('cities/index', { cities, findKey: findKey });
 };
 
 exports.show = async (req, res) => {
