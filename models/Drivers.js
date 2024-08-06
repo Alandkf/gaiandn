@@ -51,7 +51,11 @@ const sequelize = require('../config/db');
         price: {
             type: Sequelize.FLOAT,
             allowNull: false,
-        }
+        },
+        deletedAt: {
+        type: Sequelize.DATE
+        // defaultValue: Sequelize.NOW,
+    }
     }, {
         timestamps: true,
     });

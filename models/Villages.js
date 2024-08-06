@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     const Villages = sequelize.define('Villages', {
         id: {
@@ -26,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id',
             },
             allowNull: false,
+        },
+        deletedAt: {
+        type: Sequelize.DATE
+        // defaultValue: SVGAElementequelize.NOW,
         }
     }, {
         timestamps: true,

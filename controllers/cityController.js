@@ -5,15 +5,24 @@ exports.index = async (req, res) => {
      const findKey = req.query.findKey || '';
     const cities = await Cities.findAll({
         where: {
-            [Op.or]: [
+            [Op.and]: [
                 {
-                    name: {
-                        [Op.like]: `%${findKey}%`
-                    }
+                    [Op.or]: [
+                        {
+                            name: {
+                                [Op.like]: `%${findKey}%`
+                            }
+                        },
+                        {
+                            id: {
+                                [Op.like]: `%${findKey}%`
+                            }
+                        }
+                    ]
                 },
                 {
-                    id: {
-                        [Op.like]: `%${findKey}%`
+                    deletedAt: {
+                        [Op.is]: null
                     }
                 }
             ]
@@ -46,7 +55,12 @@ exports.update = async (req, res) => {
     res.redirect('/cities');
 };
 
-// exports.delete = async (req, res) => {
-//     await Cities.destroy({ where: { id: req.params.id } });
-//     res.redirect('/cities');
-// };
+exports.delete = async (req, res) => {
+    await Cities.update({ deletedAt: new Date() }, { where: { id: req.params.id } });
+    res.redirect('/cities');
+};
+
+exports.all = async (req, res) => {
+    const cities = await Cities.findAll();
+    res.json(cities);
+}

@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+
+const sequelize = require('../config/db');
 module.exports = (sequelize, DataTypes) => {
     const Employees = sequelize.define('Employees', {
         id: {
@@ -46,7 +49,11 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id',
             },
             allowNull: false,
-        }
+        },
+        deletedAt: {
+        type: Sequelize.DATE
+        // defaultValue: SVGAElementequelize.NOW,
+    }
     });
 
     return Employees;

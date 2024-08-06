@@ -1,9 +1,9 @@
 <%- include('include/header') %>
 
-    <div class="container mt-4">
-        <div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
             <!-- Sections Box -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-sm" id="sectionBox" onclick="window.location.href='/sections'">
                     <div class="card-body">
                         <h5 class="card-title">ژمارەی لقەکان</h5>
@@ -15,7 +15,7 @@
             </div>
 
             <!-- Employees Box -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-sm" id="employeeBox" onclick="window.location.href='/employees'">
                     <div class="card-body">
                         <h5 class="card-title">ژمارەی کارمەندەکان</h5>
@@ -31,7 +31,7 @@
             </div>
 
             <!-- Cities Box -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-sm" id="cityBox" onclick="window.location.href='/cities'">
                     <div class="card-body">
                         <h5 class="card-title">ژمارەی شارەکان</h5>
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Villages Box -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-sm" id="villageBox" onclick="window.location.href='/villages'">
                     <div class="card-body">
                         <h5 class="card-title">ژمارەی شارۆچکەکان</h5>
@@ -55,27 +55,19 @@
             </div>
 
             <!-- Drivers Box -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-md-8 mb-4">
                 <div class="card text-center shadow-sm" id="driverBox" onclick="window.location.href='/drivers'">
                     <div class="card-body">
                         <h5 class="card-title">ژمارەی شۆفێران</h5>
                         <p class="card-text display-4">
                             <%= toKurdishNumbers(drivers.length) %>
                         </p>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p class="card-text">شۆفێرانی ماتۆڕ: <%= toKurdishNumbers(motorDriversCount) %>
-                                </p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="card-text">شۆفێرانی ئۆتۆمبێل: <%= toKurdishNumbers(carDriversCount) %>
-                                </p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="card-text">شۆفێرانی بارهەڵگر: <%= toKurdishNumbers(truckDriversCount) %>
-                                </p>
-                            </div>
-                        </div>
+                        <p class="card-text">شۆفێرانی ماتۆڕ: <%= toKurdishNumbers(motorDriversCount) %>
+                        </p>
+                        <p class="card-text">شۆفێرانی ئۆتۆمبێل: <%= toKurdishNumbers(carDriversCount) %>
+                        </p>
+                        <p class="card-text">شۆفێرانی بارهەڵگر: <%= toKurdishNumbers(truckDriversCount) %>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -86,26 +78,29 @@
         .card {
             cursor: pointer;
             transition: transform 0.3s, background-color 0.3s;
+            border-radius: 10px;
         }
 
         .card:hover {
             transform: scale(1.05);
-            background-color: #f8f9fa;
+            background-color: #e9ecef;
         }
 
         .card-title {
             font-weight: bold;
-            color: #101820;
+            color: #343a40;
+            margin-bottom: 1rem;
         }
 
         .card-text.display-4 {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #FEE715;
+            color: #007bff;
         }
 
         .card-text {
-            color: #101820;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
         }
     </style>
 

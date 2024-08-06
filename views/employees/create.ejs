@@ -1,59 +1,73 @@
 <%- include('../include/header') %>
-
+    
     <div class="container mt-4 text-right" dir="rtl">
         <h1>زیادکردنی کارمەند</h1>
         <form action="/employees" method="POST">
-            <div class="form-group">
-                <label for="name">ناو:</label>
-                <input placeholder="ناوی سیانی" type="text" id="name" name="name" class="form-control" required>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">ناو:</label>
+                    <input placeholder="ناوی سیانی" type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="salary">موچە:</label>
+                    <input placeholder="بڕی موچەی مانگانە" type="number" id="salary" name="salary" class="form-control"
+                        required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="salary">موچە:</label>
-                <input placeholder="بڕی موچەی مانگانە" type="number" id="salary" name="salary" class="form-control" required>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phoneNumber">ژمارەی مۆبایل:</label>
+                    <input placeholder="ژمارەی مۆبایل" type="text" id="phoneNumber" name="phoneNumber"
+                        class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address">ناونیشان:</label>
+                    <input placeholder="شار، ناوچە، شوێنێکی نزیک لێوەی" type="text" id="address" name="address"
+                        class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="phoneNumber">ژمارەی مۆبایل:</label>
-                <input placeholder="ژمارەی مۆبایل" type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="jobType">جۆری کار:</label>
+                    <select id="jobType" name="jobType" class="form-control">
+                        <option value="employee">کارمەند</option>
+                        <option value="manager">بەڕێوەبەر</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">وشەی نهێنی:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="address">ناونیشان:</label>
-                <input placeholder="شار، ناوچە، شوێنێکی نزیک لێوەی" type="text" id="address" name="address" class="form-control" required>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="note">تێبینی:</label>
+                    <input type="text" id="note" name="note" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="status">دۆخ:</label>
+                    <select id="status" name="status" class="form-control">
+                        <option value="active">چالاک</option>
+                        <option value="inactive">ناچالاک</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="jobType">جۆری کار:</label>
-                <select id="jobType" name="jobType" class="form-control">
-                    <option value="employee">کارمەند</option>
-                    <option value="manager">بەڕێوەبەر</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="sectionId">بەش:</label>
+                    <select id="sectionId" name="sectionId" class="form-control">
+                        <% sections.forEach(section=> { %>
+                            <option value="<%= section.id %>">
+                                <%= section.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">وشەی نهێنی:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="note">تێبینی:</label>
-                <input type="text" id="note" name="note" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="status">حالەت:</label>
-                <select id="status" name="status" class="form-control">
-                    <option value="active">چالاک</option>
-                    <option value="inactive">ناچالاک</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="sectionId">بەش:</label>
-                <select id="sectionId" name="sectionId" class="form-control">
-                    <% sections.forEach(section=> { %>
-                        <option value="<%= section.id %>">
-                            <%= section.name %>
-                        </option>
-                        <% }) %>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">دروستکردن</button>
+            <button type="submit" class="btn btn-primary"
+                style="text-wrap: nowrap; background-color: #ab15d4; border: 0px solid;">دروستکردن</button>
+            <a href="/employees" class="btn btn-secondary">گەڕانەوە بۆ لیست</a>
         </form>
-        <a href="/employees" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>
 
     <%- include('../include/footer') %>

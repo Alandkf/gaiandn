@@ -1,36 +1,42 @@
 <%- include('../include/header') %>
 
-    <div class="container mt-4 text-right">
-        <h1>زیادکردنی شارۆچکە </h1>
+    <div class="container mt-4 text-right" dir="rtl">
+        <h1>زیادکردنی شارۆچکە</h1>
         <form action="/villages/store" method="POST">
-            <div class="form-group">
-                <label for="name">ناو:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">ناو:</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="ناوی شارۆچکە بنووسە"
+                        required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="status">حالەت:</label>
+                    <select id="status" name="status" class="form-control">
+                        <option value="active">چالاک</option>
+                        <option value="inactive">ناچالاک</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="status">حالەت:</label>
-                <select id="status" name="status" class="form-control">
-                    <option value="active">چالاک</option>
-                    <option value="inactive">ناچالاک</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="price">نرخ:</label>
+                    <input type="number" id="price" name="price" class="form-control" placeholder="1000" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cityId">شار:</label>
+                    <select id="cityId" name="cityId" class="form-control">
+                        <% cities.forEach(city=> { %>
+                            <option value="<%= city.id %>">
+                                <%= city.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="price">نرخ:</label>
-                <input type="number" id="price" name="price" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="cityId">شار:</label>
-                <select id="cityId" name="cityId" class="form-control">
-                    <% cities.forEach(city=> { %>
-                        <option value="<%= city.id %>">
-                            <%= city.name %>
-                        </option>
-                        <% }) %>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">دروستکردن</button>
+            <button type="submit" class="btn btn-primary"
+                style="background-color: #ab15d4; border: 0px solid;">دروستکردن</button>
+            <a href="/villages" class="btn btn-secondary">گەڕانەوە بۆ لیست</a>
         </form>
-        <a href="/villages" class="mt-2 btn btn-secondary">گەڕانەوە بۆ لیست</a>
     </div>
 
     <%- include('../include/footer') %>

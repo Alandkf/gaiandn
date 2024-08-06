@@ -15,7 +15,8 @@
         justify-content: center;
         align-items: start;
         flex-direction: row;
-        background-color: #b5c5d1;
+        /* background-color: #b5c5d1; */
+        background-color: #EAE7DC;
         font-family: 'Rabar_016';
         /* font-weight: bold; */
         text-wrap: nowrap;
@@ -37,14 +38,22 @@ main {
 }
 
 h1,h2,h3,h4,h5,h6, label{
-    color: white;
+    color: #E8A5A4;
 }
 
 /* Initial styling for the logo */
 #logo {
-    transition: all 0.3s ease;
-    background-color: transparent !important;
-    color: #D4E6F1;
+    font-family: 'Arial', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4f62ca, #278898, #ab15d4, #8825a6, #EAE7DC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    animation: gradientShift 4s linear infinite;
+    border-radius: 10px;
+    letter-spacing: 0.2rem; /* Add space between letters */
 }
 
 /* Hover effect */

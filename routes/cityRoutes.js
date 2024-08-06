@@ -7,7 +7,8 @@ router.get('/:id/show', cityController.show);
 router.get('/create', cityController.create);
 router.post('/store', cityController.store);
 router.get('/:id/edit', cityController.edit);
-router.post('/:id/update', cityController.update);
-// router.post('/:id/delete', cityController.delete);
+router.patch('/:id/update', cityController.update);
+router.delete('/:id/delete', cityController.delete);
+// router.get('/all', cityController.all)
 
 module.exports = router;

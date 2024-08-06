@@ -8,7 +8,7 @@ function toKurdishNumbers(num) {
 
 exports.index = async (req, res) => {
     try {
-        const sections = await Sections.findAll(); 
+        const sections = await Sections.findAll();
         const employees = await Employees.findAll({ include: Sections });
         const cities = await Cities.findAll();
         const villages = await Villages.findAll({ include: Cities });
@@ -21,6 +21,19 @@ exports.index = async (req, res) => {
         const motorDriversCount = toKurdishNumbers(drivers.filter(driver => driver.vehicleType === 'motor').length);
         const carDriversCount = toKurdishNumbers(drivers.filter(driver => driver.vehicleType === 'car').length);
         const truckDriversCount = toKurdishNumbers(drivers.filter(driver => driver.vehicleType === 'truck').length);
+
+        const all = {
+            sections,
+            employees,
+            cities,
+            villages,
+            drivers,
+            managersCount,
+            employeesCount,
+            motorDriversCount,
+            carDriversCount,
+            truckDriversCount,
+        }
 
         res.render('index', {
             sections,
@@ -35,6 +48,7 @@ exports.index = async (req, res) => {
             truckDriversCount,
             toKurdishNumbers
         });
+        // res.json(all.sections[0].note);  
     } catch (error) {
         console.error('Error fetching dashboard data:', error);
         res.status(500).send('Internal Server Error');

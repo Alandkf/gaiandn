@@ -15,10 +15,10 @@
                     </form>
                 </div>
                 <div class="col-auto">
-                    <a href="/employees/create" class="btn btn-primary"
+                    <a href="/drivers/create" class="btn btn-primary"
                         style="text-wrap: nowrap; background-color: #ab15d4; border: 0px solid;">
                         <i class="fas fa-plus"></i>
-                        زیادکردن کارمەندێکی نوێ
+                        زیادکردن شۆفێری نوێ
                         <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <div class="card container mt-4 text-right" dir="rtl">
+    <div class="card container mt-4 text-right" dir="rtl" style="padding-top: 1rem;">
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -38,7 +38,7 @@
                         <th style="width: 20%;">ناوی شۆفێر</th>
                         <th style="width: 15%;">ژمارەی مۆبایل</th>
                         <th style="width: 15%;">جۆری پێڕەو</th>
-                        <th style="width: 10%;">حالەت</th>
+                        <th style="width: 10%;">دۆخ</th>
                         <th style="width: 10%;">دەستکاری</th>
                         <th style="width: 10%; text-wrap: nowrap;">وردەکاری</th>
                         <th style="width: 1%; white-space: nowrap;">سڕینەوە</th>
@@ -61,28 +61,28 @@
                                     : 'بارهەڵگر' %>
                             </td>
                             <td class="text-center">
-                                <form action="/drivers/<%= driver.id %>/update" method="post" class="d-inline">
+                                <form action="/drivers/<%= driver.id %>/update?_method=PATCH" method="post" class="d-inline">
                                     <input type="hidden" name="status"
                                         value="<%= driver.status === 'active' ? 'inactive' : 'active' %>">
                                     <button type="submit"
-                                        class="btn <%= driver.status === 'active' ? 'btn-primary' : 'btn-secondary' %> btn-sm">
+                                        class="btn <%= driver.status === 'active' ? 'btn-primary' : 'btn-secondary' %> btn">
                                         <%= driver.status==='active' ? 'چالاک' : 'ناچالاک' %>
                                     </button>
                                 </form>
                             </td>
                             <td class="text-center">
-                                <a href="/drivers/<%= driver.id %>/edit" class="btn btn-sm btn-success">دەستکاری</a>
+                                <a href="/drivers/<%= driver.id %>/edit" class="btn btn-success">دەستکاری</a>
                             </td>
                             <td class="text-center">
-                                <a href="/drivers/<%= driver.id %>/show" class="btn btn-info btn-sm"
+                                <a href="/drivers/<%= driver.id %>/show" class="btn btn-info btn"
                                     style="text-wrap: nowrap;">وردەکاری</a>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal-<%= driver.id %>">
-                                    سڕینەوە
-                                </button>
-
+                                <form action="/drivers/<%= driver.id %>/delete?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-danger btn">
+                                        سڕینەوە
+                                    </button>
+                                </form>
                                 <!-- Delete Confirmation Modal -->
                                 <div class="modal fade" id="deleteModal-<%= driver.id %>" tabindex="-1"
                                     aria-labelledby="deleteModalLabel-<%= driver.id %>" aria-hidden="true">

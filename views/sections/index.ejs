@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <div class="card container mt-4 text-right" dir="rtl">
+    <div class="card container mt-4 text-right" style="padding-top: 1rem;" dir="rtl">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -36,7 +36,7 @@
                     <th style="width: 1%;">ID</th>
                     <th>ناوی لق</th>
                     <th style="width: 40%;">تێبینی</th>
-                    <th style="width: 10%; white-space: nowrap;">حالەت</th>
+                    <th style="width: 10%; white-space: nowrap;">دۆخ</th>
                     <th style="width: 1%; white-space: nowrap;">دەستکاری</th>
                     <th style="width: 1%; white-space: nowrap;">وردەکاری</th>
                     <th style="width: 1%; white-space: nowrap;">سڕینەوە</th>
@@ -55,7 +55,8 @@
                             <%= section.note %>
                         </td>
                         <td class="text-center">
-                            <form action="/sections/<%= section.id %>/update" method="post" class="d-inline">
+                            <form action="/sections/<%= section.id %>/update?_method=PATCH" method="post" class="d-inline">
+                                <!-- <input type="hidden" name="_method" value="PATCH"> -->
                                 <input type="hidden" name="status"
                                     value="<%= section.status === 'active' ? 'inactive' : 'active' %>">
                                 <button type="submit"
@@ -63,11 +64,13 @@
                                     <%= section.status==='active' ? 'چالاک' : 'ناچالاک' %>
                                 </button>
                             </form>
+
                         </td>
-                        <td><a href="/sections/<%= section.id %>/edit" class="btn btn-sm btn-success">دەستکاری</a></td>
+                        <td><a href="/sections/<%= section.id %>/edit" class="btn btn btn-success">دەستکاری</a></td>
                         <td><a href="/sections/<%= section.id %>/show" class="btn btn-info">وردەکاری</a></td>
                         <td>
-                            <form action="/sections/<%= section.id %>/delete" method="post" class="d-inline">
+                            <form action="/sections/<%= section.id %>/delete?_method=DELETE" method="post" class="d-inline">
+                                <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger">سڕینەوە</button>
                             </form>
                         </td>

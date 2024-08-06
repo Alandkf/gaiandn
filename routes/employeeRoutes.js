@@ -7,7 +7,7 @@ router.get('/:id/show', employeeController.show);
 router.get('/create', employeeController.create);
 router.post('/', employeeController.store);
 router.get('/:id/edit', employeeController.edit);
-router.post('/:id', employeeController.update);
-// router.post('/:id/delete', employeeController.delete);
-
+router.patch('/:id/update', employeeController.update);
+router.delete('/:id/delete', employeeController.delete);
+// router.get('/all', employeeController.all);
 module.exports = router;

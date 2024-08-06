@@ -3,20 +3,30 @@ const { Op } = require('sequelize');
 
 exports.index = async (req, res) => {
     const findKey = req.query.findKey || '';
-    const villages = await Villages.findAll({ include: Cities,where: {
-            [Op.or]: [
+    const villages = await Villages.findAll({ 
+        include: Cities,
+        where: {
+            [Op.and]: [
                 {
-                    name: {
-                        [Op.like]: `%${findKey}%`
-                    }
+                    [Op.or]: [
+                        {
+                            name: {
+                                [Op.like]: `%${findKey}%`
+                            }
+                        },
+                        {
+                            id: {
+                                [Op.like]: `%${findKey}%`
+                            }
+                        }
+                    ]
                 },
                 {
-                    id: {
-                        [Op.like]: `%${findKey}%`
-                    }
+                    deletedAt: null
                 }
             ]
-        } });
+        }
+    });
     res.render('villages/index', { villages,findKey });
 };
 
@@ -26,7 +36,7 @@ exports.show = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-    const cities = await Cities.findAll();
+    const cities = await Cities.findAll({where:{deletedAt: null}});
     console.log("here the values that goes with the cities");
     // console.log(cities);
     res.render('villages/create',{ cities });
@@ -39,7 +49,7 @@ exports.store = async (req, res) => {
 
 exports.edit = async (req, res) => {
     const village = await Villages.findByPk(req.params.id);
-      const cities = await Cities.findAll();
+    const cities = await Cities.findAll({where:{deletedAt: null}});
     res.render('villages/edit', { village, cities });
 };
 
@@ -49,6 +59,11 @@ exports.update = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-    await Villages.destroy({ where: { id: req.params.id } });
+    await Villages.update({ deletedAt: new Date() }, { where: { id: req.params.id } });
     res.redirect('/villages');
 };
+
+exports.all = async (req, res) =>{
+    const villages = await Villages.findAll();
+    res.json(villages);
+}

@@ -11,3 +11,24 @@ window.addEventListener('load', function () {
     searchInput.value = '';
     searchInput.value = value;
 });
+
+
+
+function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('collapsed');
+            }
+
+            document.getElementById('toggleBtn').addEventListener('click', toggleSidebar);
+
+            function checkWidth() {
+                const sidebar = document.getElementById('sidebar');
+                if (window.innerWidth <= 1048) {
+                    sidebar.classList.add('collapsed');
+                } else {
+                    sidebar.classList.remove('collapsed');
+                }
+            }
+
+            window.addEventListener('resize', checkWidth);
+            window.addEventListener('load', checkWidth);

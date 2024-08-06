@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     const Sections = sequelize.define('Sections', {
         id: {
@@ -8,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         note: {
             type: DataTypes.STRING,
@@ -18,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: 'active',
         },
+        deletedAt: {
+        type: Sequelize.DATE
+    }
     }, {
         timestamps: true,
     });
